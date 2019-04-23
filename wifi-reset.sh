@@ -7,7 +7,7 @@
 while [ -z $(iwconfig 2> /dev/null | grep -o '^[[:alnum:]]\+') ]; do echo NO wireless interface yet defined; sleep 1; done
 
 # Bring all wifi interfaces down.
-iwconfig 2> /dev/null | grep -o '^[[:alnum:]]\+' | while read x; do ifdown $x; done
+iwconfig 2> /dev/null | grep -o '^[[:alnum:]]\+' | while read x; do sudo ifconfig $x down; done
 
 # Bring all wifi interfaces up.
-iwconfig 2> /dev/null | grep -o '^[[:alnum:]]\+' | while read x; do ifup $x; done
+iwconfig 2> /dev/null | grep -o '^[[:alnum:]]\+' | while read x; do sudo ifconfig $x up; done
